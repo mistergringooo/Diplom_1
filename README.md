@@ -1,24 +1,45 @@
-## Задание 1: Юнит-тесты
+# Diplom_1 — Юнит-тесты сборки заказа Stellar Burgers
 
-### Автотесты для проверки программы, которая помогает заказать бургер в Stellar Burgers
+Юнит-тесты на pytest для классов, отвечающих за сборку заказа в Stellar Burgers. Дипломный проект курса «Тестировщик ПО с нуля» (Яндекс Практикум).
 
-### Реализованные сценарии
+## Что проверяется
 
-Созданы юнит-тесты, покрывающие классы `Bun`, `Burger`, `Ingredient`, `Database`
+Классы модуля `praktikum`, отвечающие за бизнес-логику сборки бургера:
 
-Процент покрытия 100% (отчет: `htmlcov/index.html`)
+- **`Bun`** — булка бургера
+- **`Burger`** — сборка бургера: добавление/удаление ингредиентов, подсчёт цены, получение чека
+- **`Ingredient`** — ингредиент (тип + цена)
+- **`Database`** — база доступных ингредиентов и булок
 
-### Структура проекта
+**14 тестов**, 100% покрытие этих четырёх классов (`bun_test.py`, `burger_test.py`, `database_test.py`, `ingredient_test.py`). Демонстрационный скрипт `praktikum.py` сознательно не покрывается тестами — по заданию курса проверке подлежит только бизнес-логика классов.
 
-- `praktikum` - пакет, содержащий код программы
-- `tests` - пакет, содержащий тесты, разделенные по классам. Например, `bun_test.py`, `burger_test.py` и т.д.
+## Стек
 
-### Запуск автотестов
+Python, pytest, pytest-cov
 
-**Установка зависимостей**
+## Структура проекта
 
-> `$ pip install -r requirements.txt`
+```
+praktikum/
+├── __init__.py
+├── bun.py                # класс Bun
+├── burger.py              # класс Burger
+├── database.py            # класс Database
+├── ingredient.py           # класс Ingredient
+├── ingredient_types.py       # перечисление типов ингредиентов
+└── praktikum.py            # демонстрационный скрипт (не покрывается тестами)
+tests/
+├── bun_test.py
+├── burger_test.py
+├── database_test.py
+└── ingredient_test.py
+```
 
-**Запуск автотестов и создание HTML-отчета о покрытии**
+## Как запустить
 
->  `$ pytest --cov=praktikum --cov-report=html`
+```bash
+pip install -r requirements.txt
+pytest --cov=praktikum --cov-report=html
+```
+
+Отчёт о покрытии откроется в `htmlcov/index.html`.
